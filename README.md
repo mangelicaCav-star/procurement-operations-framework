@@ -4,6 +4,9 @@
 
 ## Project Overview
 
+> **Architecture update (2026-10-16):** [EVOF Functional Scope v2.0](docs/EVOF_Functional_Scope_v2_0.md) defines EVOF as an ERP-data-informed, cross-functional decision-support framework—not a transactional ERP replacement. The Excel v1.1 workbooks remain historical prototypes; v2.0 decision models and ERP integration are not yet implemented.
+
+
 EVOF is an independent procurement operations improvement initiative designed to connect Procurement, Inventory, Finance, Engineering, and Project Management through structured workflows, consistent data, and clear responsibilities.
 
 The project explores how organizations can move from reactive purchasing decisions toward proactive planning, improved supply visibility, stronger operational controls, and data-informed decisions.
