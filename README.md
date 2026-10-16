@@ -120,3 +120,13 @@ Its guiding principle is to **anticipate operational risks and connect people, p
 ---
 
 *Independent portfolio project. All example data is simulated and provided for demonstration and professional development.*
+
+## MRP Buyer / Project Cost Decision pilot (2026-10-16)
+
+The v0.4 **synthetic-data prototype** compares waiting, expediting and alternate supply using time-phased material requirements, incremental cost, project budget impact and delivery feasibility. It is **partially validated** (13 arithmetic/static checks; 3 tests not run), **not production-ready**, and does not replace ERP/MRP approvals.
+
+- [Decision methodology v0.4](docs/EVOF_MRP_Project_Cost_Decision_Methodology_v0_4.md)
+- [Validation report v0.4](docs/EVOF_MRP_Project_Cost_Validation_v0_4.md)
+- [Sprint log — 2026-10-16](docs/EVOF_Sprint_Log_2026-10-16.md)
+
+The v0.4 Excel workbook was created as a local prototype and **is not yet committed to this repository**. The reports document verified arithmetic, not completed end-to-end Excel recalc or supplier feasibility testing.
