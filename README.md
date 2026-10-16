@@ -46,6 +46,14 @@ EVOF demonstrates a connected procurement workflow:
 
 **Version guidance:** The Excel files document successive development stages. **v1.1 is the latest reviewed workbook**, not a fully certified or production-ready system. Earlier workbooks remain available to show the project's evolution.
 
+## EVOF v2.0 — Decision-Support Design
+
+- [Functional Scope v2.0](docs/EVOF_Functional_Scope_v2_0.md) — purpose, system boundary, exclusions and v1.1 component disposition.
+- [Information Architecture v2.0](docs/EVOF_Information_Architecture_v2_0.md) — conceptual ERP-export data contracts, join keys, lineage and quality checks.
+- [Parking Lot](docs/EVOF_Parking_Lot.md) — deferred design opportunities, including cross-project reuse and inventory policy.
+
+**Implementation status:** v2.0 is documented architecture, not a connected ERP application or validated decision engine. The v1.1 workbook remains the latest Excel prototype.
+
 ## Architecture & Documentation
 
 The integrated prototype uses shared **Supplier ID** and **PO ID** references to connect procurement records and reporting.
