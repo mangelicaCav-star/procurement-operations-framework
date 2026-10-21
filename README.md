@@ -138,3 +138,7 @@ The [v0.4 Excel workbook](EVOF_MRP_Project_Cost_Decision_v0_4.xlsx) **is committ
 The v0.4 regression identified **EVOF-040-01**: candidate quantity was compared with incremental BOM demand instead of the full uncovered requirement. A corrected **local v0.4.1 workbook** accounts for confirmed, timely prior recovery and prevents a partial-coverage option from appearing sufficient. **13/13 synthetic local regression checks PASS**; see [coverage regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md).
 
 **Publication boundary:** the corrected v0.4.1 Excel file is **not yet in this repository**. The published v0.4 workbook retains the known coverage defect and must not be treated as the corrected baseline. Excel 365 regression, supplier capacity, split deliveries, MOQ and real ERP/finance reconciliation remain pending. Sprint closed **provisionally for local prototype validation only**.
+
+## Process documentation for future orchestration (2026-10-20)
+
+[Process & Automation Readiness Log](docs/PROCESS_AUTOMATION_LOG.md) records process-level inputs, rules, responsibilities, outputs, validation evidence, exceptions, and possible future agent/tool orchestration. This is **documentation only**: it does not introduce AI agents, replace functional testing, or claim completed manual integration with the other project. Process records will be refined as functional sprints close.
