@@ -142,3 +142,7 @@ The v0.4 regression identified **EVOF-040-01**: candidate quantity was compared 
 ## Process documentation for future orchestration (2026-10-20)
 
 [Process & Automation Readiness Log](docs/PROCESS_AUTOMATION_LOG.md) records process-level inputs, rules, responsibilities, outputs, validation evidence, exceptions, and possible future agent/tool orchestration. This is **documentation only**: it does not introduce AI agents, replace functional testing, or claim completed manual integration with the other project. Process records will be refined as functional sprints close.
+
+### Corrective workbook publication — 2026-10-21
+
+The **EVOF v0.4.1 Coverage Corrected** workbook has been uploaded to [docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx) (filename retains the original `_LOCAL` suffix). The original v0.4 workbook remains unchanged at repository root. See the [13-check local regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md). These are synthetic, local-engine checks only; Excel 365 remains deferred. No real ERP, supplier confirmation, capacity, MOQ or live finance validation is claimed.
