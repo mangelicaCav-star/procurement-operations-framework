@@ -131,13 +131,13 @@ The v0.4 **synthetic-data prototype** compares waiting, expediting and alternate
 
 The [v0.4 Excel workbook](EVOF_MRP_Project_Cost_Decision_v0_4.xlsx) **is committed to this repository**. Its reports document verified arithmetic, not completed end-to-end Excel recalculation or supplier feasibility testing.
 
-**Sprint 2026-10-20:** [MRP/project-cost test plan and acceptance criteria](docs/EVOF_Sprint_Plan_2026-10-20.md). Execution remains **NOT RUN** until observed results are recorded. The integrated governance v1.1 functional tests remain a separate workstream.
+**Sprint 2026-10-20:** [MRP/project-cost test plan and acceptance criteria](docs/EVOF_Sprint_Plan_2026-10-20.md). The v0.4.1 local coverage regression has since been executed (13/13 PASS); the separate integrated governance v1.1 matrix remains unexecuted. The integrated governance v1.1 functional tests remain a separate workstream.
 
 ## EVOF v0.4.1 — Coverage correction (2026-10-20)
 
 The v0.4 regression identified **EVOF-040-01**: candidate quantity was compared with incremental BOM demand instead of the full uncovered requirement. A corrected **local v0.4.1 workbook** accounts for confirmed, timely prior recovery and prevents a partial-coverage option from appearing sufficient. **13/13 synthetic local regression checks PASS**; see [coverage regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md).
 
-**Publication boundary:** the corrected v0.4.1 Excel file is **not yet in this repository**. The published v0.4 workbook retains the known coverage defect and must not be treated as the corrected baseline. Excel 365 regression, supplier capacity, split deliveries, MOQ and real ERP/finance reconciliation remain pending. Sprint closed **provisionally for local prototype validation only**.
+**Publication update (2026-10-21):** the corrected v0.4.1 Excel file is now [published in docs](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx). The published v0.4 workbook retains the known coverage defect and must not be treated as the corrected baseline. Excel 365 regression, supplier capacity, split deliveries, MOQ and real ERP/finance reconciliation remain pending. Sprint closed **provisionally for local prototype validation only**.
 
 ## Process documentation for future orchestration (2026-10-20)
 
