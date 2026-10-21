@@ -129,4 +129,6 @@ The v0.4 **synthetic-data prototype** compares waiting, expediting and alternate
 - [Validation report v0.4](docs/EVOF_MRP_Project_Cost_Validation_v0_4.md)
 - [Sprint log — 2026-10-16](docs/EVOF_Sprint_Log_2026-10-16.md)
 
-The v0.4 Excel workbook was created as a local prototype and **is not yet committed to this repository**. The reports document verified arithmetic, not completed end-to-end Excel recalc or supplier feasibility testing.
+The [v0.4 Excel workbook](EVOF_MRP_Project_Cost_Decision_v0_4.xlsx) **is committed to this repository**. Its reports document verified arithmetic, not completed end-to-end Excel recalculation or supplier feasibility testing.
+
+**Sprint 2026-10-20:** [MRP/project-cost test plan and acceptance criteria](docs/EVOF_Sprint_Plan_2026-10-20.md). Execution remains **NOT RUN** until observed results are recorded. The integrated governance v1.1 functional tests remain a separate workstream.
