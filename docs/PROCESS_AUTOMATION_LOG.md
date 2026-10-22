@@ -49,3 +49,20 @@ Documentar cada proceso a medida que se implemente o revise, preservando entrada
 - No asumir autenticación de aprobaciones ni integridad de datos no disponibles.
 - Registrar versión, procedencia y evidencia; preservar la decisión manual cuando corresponda.
 - Cualquier decisión sobre agentes se considera **futura** hasta terminar y validar la integración manual.
+
+
+## Actualización de simulación privada — 2026-10-22
+
+**Artefacto:** simulador EVOF 1.0. **Owner de revisión funcional:** Angelica Martinez. **Estado:** implementado y validado en motor JavaScript con datos ficticios; no validación productiva ni integración entre proyectos. [Guía](./EVOF_Simulator_Guide.md) y [matriz de 38 casos](./EVOF_Simulator_Validation_2026-10-22.md).
+
+| Registro | Disparador / entradas | Reglas / transformación | Responsables y autoridad | Salidas / evidencia | Excepción y recuperación |
+|---|---|---|---|---|---|
+| EVOF-SIM-P01 | Cambio MPS FG-B; BOM; stock compartido; consumo fechado; evidencia de recuperación | Recalcular demanda, conservar déficit previo y descontar solo cobertura verificable y oportuna | Planeación valida demanda; Almacén, posición; Compras, suministro; owner revisa lógica | Demanda y faltante residual; casos de cobertura del motor | Faltante o recuperación sin evidencia conserva exposición; corregir supuesto y recalcular |
+| EVOF-SIM-P02 | Faltante + alternativas + fechas, confirmaciones, costo y presupuesto | Ventanas por alternativa; cobertura; factibilidad; presupuesto; comparación entre candidatas | Compras confirma cantidad/ETA; Ingeniería valida; Finanzas valida costos; autoridad humana aprueba | Comparativo, costo incremental, forecast y siguiente frontera de decisión | Parcial/tardía no resuelve todo; sobrepresupuesto escala; sin opción preventiva pasar a gestión de impacto |
+| EVOF-SIM-P03 | Posición donante, autorización, reposición, fecha origen y asignación propuesta | Proteger proyecto origen y receptor; contar material una vez; conservar obligación de reposición | Proyectos origen/receptor y Finanzas revisan conjuntamente | Cantidad transferida, residual, buffer y ambos presupuestos | Sin evidencia de reposición o mitigación aprobada no declarar factibilidad confirmada |
+
+**Contrato y procedencia:** escenarios sintéticos, unidades y moneda visibles, versión fuente y corte separados del escenario. Los supuestos editados no constituyen hechos ERP ni autorizaciones autenticadas. 38/38 resultados JavaScript PASS y verificación de interacción en navegador; las pruebas de Excel 365 se registran por separado con su procedencia de usuario.
+
+**Dependencia BUD–EVOF:** no hay interfaz ejecutada. El intercambio manual necesita IDs, moneda, reglas aceptadas y pruebas cruzadas antes de cualquier orquestación. **LLM/agentes:** futuro; ningún motor determinista se sustituye por texto generado. Exportar JSON permite revisar el caso, no crea una bitácora inmutable.
+
+**Siguiente puerta:** comparar escenarios Excel–simulador–criterio operativo, registrar diferencias y aceptar o rechazar las extensiones. No se declara cerrado el backlog pendiente por tener un simulador funcional.

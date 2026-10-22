@@ -2,16 +2,29 @@
 
 **Independent Portfolio Project | Procurement · Supply Chain · Operations Improvement · Data Governance**
 
+## Current decision-simulator track — 22 October 2026
+
+The private **EVOF MRP Project Cost Decision Simulator 1.0** makes MPS/BOM changes, full uncovered demand, supply evidence, delivery windows and project-budget consequences interactive. It also exposes a bounded reallocation/replenishment comparison with origin protection and proposed cost allocation.
+
+- **[Simulator guide and rule lineage](docs/EVOF_Simulator_Guide.md)**
+- **[38-case JavaScript validation record](docs/EVOF_Simulator_Validation_2026-10-22.md)** — 38/38 PASS with scoped browser QA, not production validation.
+- [Private simulator — owner account required](https://evof-decision-simulator.humblerobin2048.chatgpt.site).
+- Workbook evidence: 13/13 prior local coverage checks and [7/7 Excel 365 checks reported by the user](docs/EVOF_Excel365_Validation_Status_2026-10-21.md).
+
+Default demand is 135 pieces, with 30 pieces left after prior consumption: **105 uncovered**, not 60. Sixty is the residual only after 45 pieces of verified, documented, timely recovery. Default expedite is USD 6,310 and the modeled project forecast is USD 26,310 against USD 25,000 budget. Estimated delivery, confirmation, budget authorization and human approval remain distinct.
+
+The simulator is owner-private; this repository publishes its documentation, not its source or assets. Its disclosed MOQ/capacity, calendar-window and cost-allocation controls are prototype extensions for functional review. This update changes no workbook binary and does not complete the full v2.0 architecture, real ERP integration, BUD integration or agent orchestration.
+
 ## Project Overview
 
-> **Architecture update (2026-10-16):** [EVOF Functional Scope v2.0](docs/EVOF_Functional_Scope_v2_0.md) defines EVOF as an ERP-data-informed, cross-functional decision-support framework—not a transactional ERP replacement. The Excel v1.1 workbooks remain historical prototypes; v2.0 decision models and ERP integration are not yet implemented.
+> **Architecture update (2026-10-16):** [EVOF Functional Scope v2.0](docs/EVOF_Functional_Scope_v2_0.md) defines EVOF as an ERP-data-informed, cross-functional decision-support framework—not a transactional ERP replacement. The Excel v1.1 workbooks remain historical prototypes; ERP integration and the complete v2.0 architecture remain unimplemented. The bounded MRP v0.4.1 model and private simulator 1.0 are separate implementations described below.
 
 
 EVOF is an independent procurement operations improvement initiative designed to connect Procurement, Inventory, Finance, Engineering, and Project Management through structured workflows, consistent data, and clear responsibilities.
 
 The project explores how organizations can move from reactive purchasing decisions toward proactive planning, improved supply visibility, stronger operational controls, and data-informed decisions.
 
-EVOF is an **Excel-based functional prototype with simulated data**, supported by documented business rules, data relationships, and governance principles. It has **not** been deployed in a production environment.
+EVOF includes **historical Excel prototypes and a bounded private browser simulator with simulated data**, supported by documented business rules, data relationships, and governance principles. It has **not** been deployed in a production environment.
 
 ## Business Problem
 
@@ -44,7 +57,7 @@ EVOF demonstrates a connected procurement workflow:
 | **Integrated Procurement — Reviewed v1.1** | Formula corrections and expanded data-quality checks; functional testing remains pending | **[Latest Excel](EVOF_Integrated_Procurement_Validated_v1_1.xlsx)** |
 | Technical Validation Report v1.1 | Findings, corrections, limitations, and proposed functional tests | [Read report](EVOF_Technical_Validation_Report_v1_1.md) |
 
-**Version guidance:** The Excel files document successive development stages. **v1.1 is the latest reviewed workbook**, not a fully certified or production-ready system. Earlier workbooks remain available to show the project's evolution.
+**Version guidance:** The Excel files document successive development stages. **v1.1 is the reviewed integrated-workbook track**; the separate MRP/project-cost track now uses v0.4.1 and simulator 1.0. None is a production-certified system. Earlier workbooks remain available to show the project's evolution.
 
 ## EVOF v2.0 — Decision-Support Design
 
@@ -52,7 +65,7 @@ EVOF demonstrates a connected procurement workflow:
 - [Information Architecture v2.0](docs/EVOF_Information_Architecture_v2_0.md) — conceptual ERP-export data contracts, join keys, lineage and quality checks.
 - [Parking Lot](docs/EVOF_Parking_Lot.md) — deferred design opportunities, including cross-project reuse and inventory policy.
 
-**Implementation status:** v2.0 is documented architecture, not a connected ERP application or validated decision engine. The v1.1 workbook remains the latest Excel prototype.
+**Implementation status:** v2.0 remains documented architecture. The historical integrated v1.1 track and bounded MRP/project-cost v0.4.1 plus private simulator track have separate validation evidence. No connected ERP application or complete v2.0 implementation is claimed.
 
 ## Architecture & Documentation
 
@@ -137,7 +150,7 @@ The [v0.4 Excel workbook](EVOF_MRP_Project_Cost_Decision_v0_4.xlsx) **is committ
 
 The v0.4 regression identified **EVOF-040-01**: candidate quantity was compared with incremental BOM demand instead of the full uncovered requirement. A corrected **local v0.4.1 workbook** accounts for confirmed, timely prior recovery and prevents a partial-coverage option from appearing sufficient. **13/13 synthetic local regression checks PASS**; see [coverage regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md).
 
-**Publication update (2026-10-21):** the corrected v0.4.1 Excel file is now [published in docs](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx). The published v0.4 workbook retains the known coverage defect and must not be treated as the corrected baseline. Excel 365 regression, supplier capacity, split deliveries, MOQ and real ERP/finance reconciliation remain pending. Sprint closed **provisionally for local prototype validation only**.
+**Publication update (2026-10-21):** the corrected v0.4.1 Excel file is now [published in docs](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx). The published v0.4 workbook retains the known coverage defect and must not be treated as the corrected baseline. Seven defined Excel 365 cases were subsequently reported PASS by the user on 21 October; see the [desktop record](docs/EVOF_Excel365_Validation_Status_2026-10-21.md). Independent operational validation, supplier capacity, split deliveries and real ERP/finance reconciliation remain open. MOQ and capacity now have simulated controls only in the separate browser prototype. Sprint closed **provisionally for local prototype validation only**.
 
 ## Process documentation for future orchestration (2026-10-20)
 
@@ -145,4 +158,4 @@ The v0.4 regression identified **EVOF-040-01**: candidate quantity was compared 
 
 ### Corrective workbook publication — 2026-10-21
 
-The **EVOF v0.4.1 Coverage Corrected** workbook has been uploaded to [docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx) (filename retains the original `_LOCAL` suffix). The original v0.4 workbook remains unchanged at repository root. See the [13-check local regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md). These are synthetic, local-engine checks only; Excel 365 remains deferred. No real ERP, supplier confirmation, capacity, MOQ or live finance validation is claimed.
+The **EVOF v0.4.1 Coverage Corrected** workbook has been uploaded to [docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx) (filename retains the original `_LOCAL` suffix). The original v0.4 workbook remains unchanged at repository root. See the [13-check local regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md). The 13 local checks remain separate from the [7 user-reported Excel 365 PASS results](docs/EVOF_Excel365_Validation_Status_2026-10-21.md). The desktop outcomes were not independently witnessed. No real ERP, supplier confirmation, capacity, MOQ or live finance validation is claimed.
