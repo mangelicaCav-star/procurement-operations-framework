@@ -1,0 +1,76 @@
+import fs from 'node:fs/promises';
+import crypto from 'node:crypto';
+import {FileBlob,SpreadsheetFile} from '@oai/artifact-tool';
+const [src,out]=process.argv.slice(2);if(!src||!out)throw Error('source.xlsx output-directory');
+await fs.mkdir(out,{recursive:true});const bytes=await fs.readFile(src);
+const hash=crypto.createHash('sha256').update(bytes).digest('hex');
+const blobSha=crypto.createHash('sha1').update(Buffer.from(`blob ${bytes.length}\0`)).update(bytes).digest('hex');
+const w=await SpreadsheetFile.importXlsx(await FileBlob.load(src)),sh=n=>w.worksheets.getItem(n);
+const get=(n,a)=>sh(n).getRange(a).values[0][0],put=(n,a,v)=>sh(n).getRange(a).values=[[v]];
+const initial=sh('Parametros').getRange('B2:B26').values,project=sh('Proyectos').getRange('A2:C3').values;
+const qtyFormula=sh('Alternativas').getRange('B3').formulas[0][0];
+const reset=()=>{sh('Parametros').getRange('B2:B26').values=initial;sh('Proyectos').getRange('A2:C3').values=project;sh('Alternativas').getRange('B3').formulas=[[qtyFormula]];};
+const checks=[];
+function ck(id,group,label,expect,locations){
+ const actual=Object.fromEntries(Object.entries(locations).map(([k,[s,a]])=>[k,get(s,a)]));
+ const pass=Object.entries(expect).every(([k,v])=>typeof v==='number'?typeof actual[k]==='number'&&Math.abs(actual[k]-v)<1e-8:actual[k]===v);
+ checks.push({id,group,label,expected:expect,actual,locations,result:pass?'PASS':'FAIL'});
+}
+const loc=(s,a)=>({value:[s,a]});let i=0;const b=(label,s,a,value)=>ck(`B${String(++i).padStart(2,'0')}`,'prior-13-reexecuted',label,{value},loc(s,a));
+b('Faltante base','MRP_Cambio','B6',105);b('Compra candidata base','Alternativas','B3',105);b('No confirma automáticamente','Alternativas','M3','POTENCIAL / VALIDAR');
+put('Parametros','B6',50);b('MPS 50 produce faltante 120','MRP_Cambio','B8',120);b('MPS 50 propone compra 120','Alternativas','B3',120);reset();
+put('Parametros','B24',45);b('Recuperación no confirmada ignorada','MRP_Cambio','B8',105);put('Parametros','B26',1);b('Confirmada oportuna reduce a 60','MRP_Cambio','B8',60);
+put('Parametros','B25',initial[13][0]+1);b('Recuperación tardía ignorada','MRP_Cambio','B8',105);put('Parametros','B25',initial[13][0]-1);put('Parametros','B24',20);b('Recuperación parcial 20 deja 85','MRP_Cambio','B8',85);
+put('Parametros','B24',105);ck('B10','prior-13-reexecuted','Cobertura previa completa bloquea nueva compra',{gap:0,coverage:'NO'},{gap:['MRP_Cambio','B8'],coverage:['Alternativas','K3']});i=10;reset();
+put('Parametros','B19',1);b('Confirmación con exceso de presupuesto escala','Alternativas','N3','ESCALAR PRESUPUESTO');put('Parametros','B17',initial[13][0]+1);b('Expedite tardío no factible','Alternativas','M3','NO FACTIBLE');reset();
+ck('B13','prior-13-reexecuted','Restauración de faltante y costo',{gap:105,cost:6310,forecast:26310},{gap:['MRP_Cambio','B8'],cost:['Alternativas','G3'],forecast:['Alternativas','H3']});
+// Independent oracle from input quantities, dates and costs, without reading BUD/EVOF output formulas.
+const observed={gross:['MRP_Cambio','B4'],stock:['MRP_Cambio','B5'],shortage:['MRP_Cambio','B6'],recovery:['MRP_Cambio','B7'],gap:['MRP_Cambio','B8'],wait:['Alternativas','G2'],expedite:['Alternativas','G3'],alternate:['Alternativas','G4'],forecast:['Alternativas','H3'],variance:['Alternativas','I3']};
+const oracle=p=>{const v=r=>p[r-2][0],gross=v(8)+(v(6)-v(5))*v(7),stock=v(3)-v(4),shortage=Math.max(0,gross-stock),recovery=v(26)===1&&typeof v(25)==='number'&&v(25)<=v(15)?Math.min(Math.max(0,v(24)),shortage):0,gap=Math.max(0,shortage-recovery),expedite=gap*v(10)+v(12);return{gross,stock,shortage,recovery,gap,wait:gap*v(10)+v(11),expedite,alternate:gap*v(13)+v(14),forecast:20000+expedite,variance:20000+expedite-25000};};
+const scenarios=[['A01','Base independiente',{}],['A02','MPS aumenta a 50',{6:50}],['A03','BOM 4 con demanda original coherente 25x4',{7:4,8:100}],['A04','Inventario suficiente evita nueva compra',{3:200}],['A05','Recuperación válida parcial 20',{24:20,26:1}],['A06','Recuperación excesiva se limita al faltante',{24:500,26:1}],['A07','MPS cero elimina demanda de FG-B',{6:0}],['A08','Stock cero conserva faltante previo acumulado',{3:0}]];
+for(const [id,label,changes]of scenarios){reset();for(const [r,v]of Object.entries(changes))put('Parametros','B'+r,v);ck(id,'additional-valid-cases',label,oracle(sh('Parametros').getRange('B2:B26').values),observed);}
+reset();put('Parametros','B24',45);put('Parametros','B26',1);put('Parametros','B19',1);ck('A09','additional-valid-cases','Expedite confirmado, oportuno y dentro de presupuesto',{gap:60,cost:3970,forecast:23970,decision:'EVALUAR EXPEDITE'},{gap:['MRP_Cambio','B8'],cost:['Alternativas','G3'],forecast:['Alternativas','H3'],decision:['Control_Decision','B3']});
+reset();put('Proyectos','B2',30000);put('Parametros','B20',1);put('Parametros','B21',1);ck('A10','additional-valid-cases','Solo alterno confirmado y calificado',{feasible:'FACTIBLE CONFIRMADA',decision:'EVALUAR ALTERNO'},{feasible:['Alternativas','M4'],decision:['Control_Decision','B3']});
+put('Parametros','B21',0);ck('A11','additional-valid-cases','Alterno sin calificación no se confirma',{feasible:'POTENCIAL / VALIDAR',decision:'PENDIENTE DE CONFIRMACION / ESCALAR'},{feasible:['Alternativas','M4'],decision:['Control_Decision','B3']});
+reset();put('Parametros','B17',initial[13][0]+1);put('Parametros','B18',initial[13][0]+1);ck('A12','additional-valid-cases','Expedite y alterno tardíos',{exp:'NO FACTIBLE',alt:'NO FACTIBLE',minimum:'SIN ALTERNATIVA FACTIBLE'},{exp:['Alternativas','M3'],alt:['Alternativas','M4'],minimum:['Control_Decision','B2']});
+reset();put('Parametros','B26',2);put('Parametros','B24',45);ck('A13','additional-valid-cases','Indicador distinto de 1 no confirma recuperación',{gap:105,recovery:0},{gap:['MRP_Cambio','B8'],recovery:['MRP_Cambio','B7']});
+reset();put('Alternativas','B3',60);ck('A14','fault-injection-coverage','Inyección temporal de cantidad parcial 60 contra faltante 105',{coverage:'NO',feasible:'NO FACTIBLE'},{coverage:['Alternativas','K3'],feasible:['Alternativas','M3']});reset();
+// Defect-oriented cases: expected business prerequisite must hold, not simply the existing formula.
+const defect=(id,label,edits,expected,read,note)=>{reset();for(const[s,a,v]of edits)put(s,a,v);const actual=read();checks.push({id,group:'robustness-and-decision',label,edits,expected,actual,result:actual.acceptable?'PASS':'FAIL',note});};
+defect('R01','Recuperación con fecha ausente no debe descontarse',[['Parametros','B24',45],['Parametros','B26',1],['Parametros','B25',null]],'recovery=0; falta fecha documentada',()=>({acceptable:get('MRP_Cambio','B7')===0,recovery:get('MRP_Cambio','B7'),gap:get('MRP_Cambio','B8')}),'La fecha debe existir además de no ser posterior a la necesidad.');
+defect('R02','Expedite sin fecha no debe ser candidato confirmado',[['Parametros','B19',1],['Proyectos','B2',30000],['Parametros','B17',null]],'No EVALUAR EXPEDITE y no FACTIBLE CONFIRMADA',()=>({acceptable:get('Control_Decision','B3')!=='EVALUAR EXPEDITE'&&get('Alternativas','M3')!=='FACTIBLE CONFIRMADA',feasible:get('Alternativas','M3'),decision:get('Control_Decision','B3'),date:get('Alternativas','C3')}),'Fecha ausente no es evidencia de entrega oportuna.');
+defect('R03','Costo unitario ausente no debe habilitar compra',[['Parametros','B19',1],['Parametros','B10',null]],'No EVALUAR EXPEDITE con costo unitario desconocido',()=>({acceptable:get('Control_Decision','B3')!=='EVALUAR EXPEDITE',cost:get('Alternativas','G3'),forecast:get('Alternativas','H3'),decision:get('Control_Decision','B3')}),'Costo desconocido no equivale a costo cero.');
+defect('R04','Compromisos ausentes no deben habilitar compra',[['Parametros','B19',1],['Proyectos','C2',null]],'No EVALUAR EXPEDITE con línea base de costo desconocida',()=>({acceptable:get('Control_Decision','B3')!=='EVALUAR EXPEDITE',forecast:get('Alternativas','H3'),decision:get('Control_Decision','B3')}),'Una línea base vacía no acredita disponibilidad de presupuesto.');
+defect('R05','Elegir menor costo entre opciones confirmadas comparables',[['Proyectos','B2',40000],['Parametros','B19',1],['Parametros','B20',1],['Parametros','B21',1],['Parametros','B12',3000]],'EVALUAR ALTERNO: USD7020 < expedite USD8460, ambas confirmadas y en presupuesto',()=>({acceptable:get('Control_Decision','B3')==='EVALUAR ALTERNO',minimum:get('Control_Decision','B2'),expedite:get('Alternativas','G3'),alternate:get('Alternativas','G4'),decision:get('Control_Decision','B3')}),'La guía indica filtrar factibilidad y presupuesto, después comparar costos.');
+reset();const probes=[];
+put('Parametros','B23',3000);probes.push({id:'P01',label:'Costo material ya comprometido B23',input:3000,incremental:get('Alternativas','G3'),forecast:get('Alternativas','H3'),meaning:'B23 no tiene consumidores en las fórmulas; riesgo de doble conteo si el mismo costo ya integra la línea base. No se asume conciliación real.'});
+reset();put('Proyectos','A3','PRJ-200');probes.push({id:'P02',label:'Project ID duplicado',input:'A2=A3=PRJ-200',decision:get('Control_Decision','B3'),meaning:'No hay validación referencial ni selector por clave: las alternativas usan la fila 2. La prueba no demuestra integración por Project ID.'});
+reset();
+
+const need=initial[13][0];
+const e=(id,label,changes,expected,locations)=>{reset();for(const[n,a,x]of changes)put(n,a,x);ck(id,'correction-boundaries',label,expected,locations);};
+e('E01','Recuperación sin fecha excluida y señalada',[['Parametros','B24',45],['Parametros','B26',1],['Parametros','B25',null]],{qty:0,gap:105,warning:'EXCLUIDA: fecha requerida / inválida'},{qty:['MRP_Cambio','B7'],gap:['MRP_Cambio','B8'],warning:['MRP_Cambio','C7']});
+for(const[id,date]of [['E02','2026-10-29'],['E03',0],['E04',need-0.5]])e(id,'Fecha recuperación inválida no cuenta',[['Parametros','B24',45],['Parametros','B26',1],['Parametros','B25',date]],{qty:0,gap:105},{qty:['MRP_Cambio','B7'],gap:['MRP_Cambio','B8']});
+e('E05','Fecha recuperación igual a necesidad se acepta',[['Parametros','B24',45],['Parametros','B26',1],['Parametros','B25',need]],{qty:45,gap:60},{qty:['MRP_Cambio','B7'],gap:['MRP_Cambio','B8']});
+e('E06','Expedite sin fecha no impide evaluar alterno válido',[['Proyectos','B2',30000],['Parametros','B19',1],['Parametros','B20',1],['Parametros','B21',1],['Parametros','B17',null]],{decision:'EVALUAR ALTERNO'},{decision:['Control_Decision','B3']});
+e('E07','Costo unitario cero explícito sigue permitido',[['Parametros','B19',1],['Parametros','B10',0]],{cost:850,forecast:20850,decision:'EVALUAR EXPEDITE'},{cost:['Alternativas','G3'],forecast:['Alternativas','H3'],decision:['Control_Decision','B3']});
+e('E08','Compromisos cero explícitos siguen permitidos',[['Parametros','B19',1],['Proyectos','C2',0]],{forecast:6310,decision:'EVALUAR EXPEDITE'},{forecast:['Alternativas','H3'],decision:['Control_Decision','B3']});
+e('E09','Costo de expedite faltante no bloquea alterno válido',[['Proyectos','B2',30000],['Parametros','B10',null],['Parametros','B19',1],['Parametros','B20',1],['Parametros','B21',1]],{decision:'EVALUAR ALTERNO',cost:'COSTO REQUERIDO'},{decision:['Control_Decision','B3'],cost:['Alternativas','G3']});
+e('E10','Empate se presenta para revisión humana',[['Proyectos','B2',40000],['Parametros','B19',1],['Parametros','B20',1],['Parametros','B21',1],['Parametros','B12',1560]],{exp:7020,alt:7020,decision:'EMPATE DE COSTO / REVISAR'},{exp:['Alternativas','G3'],alt:['Alternativas','G4'],decision:['Control_Decision','B3']});
+e('E11','Alterno barato sin confirmar no desplaza confirmado',[['Proyectos','B2',40000],['Parametros','B19',1],['Parametros','B12',3000]],{decision:'EVALUAR EXPEDITE'},{decision:['Control_Decision','B3']});
+e('E12','Primero se filtra presupuesto luego se compara costo',[['Proyectos','B2',27500],['Parametros','B19',1],['Parametros','B20',1],['Parametros','B21',1],['Parametros','B12',3000]],{exp:'ESCALAR PRESUPUESTO',decision:'EVALUAR ALTERNO'},{exp:['Alternativas','N3'],decision:['Control_Decision','B3']});
+e('E13','Presupuesto vacío no da recomendación',[['Proyectos','B2',null],['Parametros','B19',1]],{variance:'PRESUPUESTO REQUERIDO',decision:'DATOS REQUERIDOS / REVISAR'},{variance:['Alternativas','I3'],decision:['Control_Decision','B3']});
+e('E14','Extra de expedite faltante no es cero',[['Parametros','B19',1],['Parametros','B12',null]],{cost:'COSTO REQUERIDO',decision:'DATOS REQUERIDOS / REVISAR'},{cost:['Alternativas','G3'],decision:['Control_Decision','B3']});
+e('E15','Fecha necesidad vacía impide factibilidad',[['Parametros','B19',1],['Parametros','B15',null]],{feasible:'DATOS REQUERIDOS',decision:'DATOS REQUERIDOS / REVISAR'},{feasible:['Alternativas','M3'],decision:['Control_Decision','B3']});
+e('E16','Fecha expedite fraccionaria no acredita plazo',[['Parametros','B19',1],['Parametros','B17',need-0.5]],{feasible:'DATOS REQUERIDOS'},{feasible:['Alternativas','M3']});
+e('E17','Precio texto no acredita costo',[['Parametros','B19',1],['Parametros','B10','52']],{cost:'COSTO REQUERIDO'},{cost:['Alternativas','G3']});
+e('E18','Precio negativo no habilita evaluación',[['Parametros','B19',1],['Parametros','B10',-1]],{decision:'DATOS REQUERIDOS / REVISAR'},{decision:['Control_Decision','B3']});
+e('E19','Extra cero explícito sigue válido',[['Parametros','B19',1],['Proyectos','B2',30000],['Parametros','B12',0]],{cost:5460,decision:'EVALUAR EXPEDITE'},{cost:['Alternativas','G3'],decision:['Control_Decision','B3']});
+reset();w.recalculate();
+const scan=await w.inspect({kind:'match',searchTerm:'#REF!|#DIV/0!|#VALUE!|#NAME\\?|#N/A|#NUM!|#NULL!|#SPILL!|#CALC!',options:{useRegex:true,maxResults:50},summary:'corrected regression final error scan'});
+await fs.writeFile(out+'/formula-error-scan.ndjson',scan.ndjson);
+const groups=Object.fromEntries([...new Set(checks.map(c=>c.group))].map(g=>[g,{total:checks.filter(c=>c.group===g).length,passed:checks.filter(c=>c.group===g&&c.result==='PASS').length,failed:checks.filter(c=>c.group===g&&c.result==='FAIL').length}]));
+const result={date:'2026-10-25',version:'v0.4.2 local correction',engine:'Artifact Tool local recalculation; not Excel365',sourceSHA256:hash,checks,groups};
+await fs.writeFile(out+'/regression-results.json',JSON.stringify(result,null,2));
+if(crypto.createHash('sha256').update(await fs.readFile(src)).digest('hex')!==hash)throw Error('Corrected workbook changed during tests');
+console.log(JSON.stringify({groups,total:checks.length,failed:checks.filter(c=>c.result==='FAIL')},null,2));

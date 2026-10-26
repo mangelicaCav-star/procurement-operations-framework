@@ -66,3 +66,9 @@ Documentar cada proceso a medida que se implemente o revise, preservando entrada
 **Dependencia BUD–EVOF:** no hay interfaz ejecutada. El intercambio manual necesita IDs, moneda, reglas aceptadas y pruebas cruzadas antes de cualquier orquestación. **LLM/agentes:** futuro; ningún motor determinista se sustituye por texto generado. Exportar JSON permite revisar el caso, no crea una bitácora inmutable.
 
 **Siguiente puerta:** comparar escenarios Excel–simulador–criterio operativo, registrar diferencias y aceptar o rechazar las extensiones. No se declara cerrado el backlog pendiente por tener un simulador funcional.
+
+
+
+## Cierre acotado — 2026-10-26
+
+EVOF-P03/P04: workbook correctivo v0.4.2 con 51/51 comprobaciones locales repetidas sobre el binario final. Siete respuestas positivas de Excel 365: seis casos confirmados y comparación de menor costo con precondición por reconfirmar. Fechas homologadas; B23 permanece pendiente. Se cierra ejecución del sprint con reservas, no aceptación productiva. [Cierre](EVOF_Sprint_Closeout_2026-10-26.md), [Excel](EVOF_Excel365_Validation_Status_2026-10-26.md), [alineación](EVOF_Simulator_Alignment_2026-10-26.md). No se implementaron agentes, integración BUD ni cambios al simulador.

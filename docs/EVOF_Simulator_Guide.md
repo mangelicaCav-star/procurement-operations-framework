@@ -1,10 +1,14 @@
 # EVOF — Private MRP Decision Simulator 1.0
 
-**Updated:** 22 October 2026. **Status:** deployed, owner-only prototype using synthetic data. The simulator is a separate implementation of a bounded decision case, not a release of the complete EVOF v2.0 architecture.
+**Implementation described:** 22 October 2026. **Documentation checkpoint:** 26 October 2026. **Status:** deployed, owner-only prototype using synthetic data. The simulator is a separate implementation of a bounded decision case, not a release of the complete EVOF v2.0 architecture.
 
 [Open the private simulator](https://evof-decision-simulator.humblerobin2048.chatgpt.site) · [Scenario validation](EVOF_Simulator_Validation_2026-10-22.md) · [Published corrected workbook](EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx)
 
 The documentation is public. The simulator requires the owner's account; its source and assets are not included in this public repository. Linking to it does not grant access. Public visitors can review this guide and the existing bounded examples on the [portfolio](https://angelica-martinez.humblerobin2048.chatgpt.site).
+
+## Workbook alignment status — 26 October 2026
+
+The [v0.4.2 workbook](../workbooks/EVOF_MRP_Project_Cost_Decision_v0_4_2_2026-10-26.xlsx) now has new date/cost/selection controls and an explicit human-review tie rule. The simulator described below has not been changed or retested in this checkpoint. [Alignment scope](EVOF_Simulator_Alignment_2026-10-26.md) and [current Excel provenance](EVOF_Excel365_Validation_Status_2026-10-26.md) define the next bounded work. Its committed-material-credit extension is not equivalent to the workbook's inactive B23 field. All 38-case simulator statements below refer to the earlier implementation, not proof of parity with v0.4.2.
 
 ## What the simulator connects
 
@@ -67,3 +71,4 @@ The JavaScript engine passed **38/38 fixed scenario checks**. Browser interactio
 Workbook evidence remains distinct: **13/13 prior local coverage checks**, plus **7/7 Excel 365 checks reported by the user on 21 October**. The reported desktop results are not independently witnessed values. Simulator tests do not certify the historical integrated governance v1.1 workbook or every v2.0 requirement.
 
 The next gate is a scenario-by-scenario comparison of workbook, simulator and the project owner's operational judgment, documenting discrepancies and deciding which extensions become accepted EVOF rules. Real supplier validation, capacity, split deliveries, production calendars, ERP/finance reconciliation, broader BOM planning and BUD integration remain open. Multi-entity purchase consolidation, a standalone small-business variant and agent orchestration remain deferred; this simulator does not activate those workstreams.
+

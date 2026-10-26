@@ -1,0 +1,1623 @@
+{
+  "date": "2026-10-25",
+  "version": "v0.4.2 local correction",
+  "engine": "Artifact Tool local recalculation; not Excel365",
+  "sourceSHA256": "ec22fb39cbf5208a7fb43fedb9759c160e043301c1c5a8bd1edaefc1610acded",
+  "checks": [
+    {
+      "id": "B01",
+      "group": "prior-13-reexecuted",
+      "label": "Faltante base",
+      "expected": {
+        "value": 105
+      },
+      "actual": {
+        "value": 105
+      },
+      "locations": {
+        "value": [
+          "MRP_Cambio",
+          "B6"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B02",
+      "group": "prior-13-reexecuted",
+      "label": "Compra candidata base",
+      "expected": {
+        "value": 105
+      },
+      "actual": {
+        "value": 105
+      },
+      "locations": {
+        "value": [
+          "Alternativas",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B03",
+      "group": "prior-13-reexecuted",
+      "label": "No confirma automáticamente",
+      "expected": {
+        "value": "POTENCIAL / VALIDAR"
+      },
+      "actual": {
+        "value": "POTENCIAL / VALIDAR"
+      },
+      "locations": {
+        "value": [
+          "Alternativas",
+          "M3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B04",
+      "group": "prior-13-reexecuted",
+      "label": "MPS 50 produce faltante 120",
+      "expected": {
+        "value": 120
+      },
+      "actual": {
+        "value": 120
+      },
+      "locations": {
+        "value": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B05",
+      "group": "prior-13-reexecuted",
+      "label": "MPS 50 propone compra 120",
+      "expected": {
+        "value": 120
+      },
+      "actual": {
+        "value": 120
+      },
+      "locations": {
+        "value": [
+          "Alternativas",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B06",
+      "group": "prior-13-reexecuted",
+      "label": "Recuperación no confirmada ignorada",
+      "expected": {
+        "value": 105
+      },
+      "actual": {
+        "value": 105
+      },
+      "locations": {
+        "value": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B07",
+      "group": "prior-13-reexecuted",
+      "label": "Confirmada oportuna reduce a 60",
+      "expected": {
+        "value": 60
+      },
+      "actual": {
+        "value": 60
+      },
+      "locations": {
+        "value": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B08",
+      "group": "prior-13-reexecuted",
+      "label": "Recuperación tardía ignorada",
+      "expected": {
+        "value": 105
+      },
+      "actual": {
+        "value": 105
+      },
+      "locations": {
+        "value": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B09",
+      "group": "prior-13-reexecuted",
+      "label": "Recuperación parcial 20 deja 85",
+      "expected": {
+        "value": 85
+      },
+      "actual": {
+        "value": 85
+      },
+      "locations": {
+        "value": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B10",
+      "group": "prior-13-reexecuted",
+      "label": "Cobertura previa completa bloquea nueva compra",
+      "expected": {
+        "gap": 0,
+        "coverage": "NO"
+      },
+      "actual": {
+        "gap": 0,
+        "coverage": "NO"
+      },
+      "locations": {
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "coverage": [
+          "Alternativas",
+          "K3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B11",
+      "group": "prior-13-reexecuted",
+      "label": "Confirmación con exceso de presupuesto escala",
+      "expected": {
+        "value": "ESCALAR PRESUPUESTO"
+      },
+      "actual": {
+        "value": "ESCALAR PRESUPUESTO"
+      },
+      "locations": {
+        "value": [
+          "Alternativas",
+          "N3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B12",
+      "group": "prior-13-reexecuted",
+      "label": "Expedite tardío no factible",
+      "expected": {
+        "value": "NO FACTIBLE"
+      },
+      "actual": {
+        "value": "NO FACTIBLE"
+      },
+      "locations": {
+        "value": [
+          "Alternativas",
+          "M3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "B13",
+      "group": "prior-13-reexecuted",
+      "label": "Restauración de faltante y costo",
+      "expected": {
+        "gap": 105,
+        "cost": 6310,
+        "forecast": 26310
+      },
+      "actual": {
+        "gap": 105,
+        "cost": 6310,
+        "forecast": 26310
+      },
+      "locations": {
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "cost": [
+          "Alternativas",
+          "G3"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A01",
+      "group": "additional-valid-cases",
+      "label": "Base independiente",
+      "expected": {
+        "gross": 135,
+        "stock": 30,
+        "shortage": 105,
+        "recovery": 0,
+        "gap": 105,
+        "wait": 7460,
+        "expedite": 6310,
+        "alternate": 7020,
+        "forecast": 26310,
+        "variance": 1310
+      },
+      "actual": {
+        "gross": 135,
+        "stock": 30,
+        "shortage": 105,
+        "recovery": 0,
+        "gap": 105,
+        "wait": 7460,
+        "expedite": 6310,
+        "alternate": 7020,
+        "forecast": 26310,
+        "variance": 1310
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A02",
+      "group": "additional-valid-cases",
+      "label": "MPS aumenta a 50",
+      "expected": {
+        "gross": 150,
+        "stock": 30,
+        "shortage": 120,
+        "recovery": 0,
+        "gap": 120,
+        "wait": 8240,
+        "expedite": 7090,
+        "alternate": 7980,
+        "forecast": 27090,
+        "variance": 2090
+      },
+      "actual": {
+        "gross": 150,
+        "stock": 30,
+        "shortage": 120,
+        "recovery": 0,
+        "gap": 120,
+        "wait": 8240,
+        "expedite": 7090,
+        "alternate": 7980,
+        "forecast": 27090,
+        "variance": 2090
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A03",
+      "group": "additional-valid-cases",
+      "label": "BOM 4 con demanda original coherente 25x4",
+      "expected": {
+        "gross": 180,
+        "stock": 30,
+        "shortage": 150,
+        "recovery": 0,
+        "gap": 150,
+        "wait": 9800,
+        "expedite": 8650,
+        "alternate": 9900,
+        "forecast": 28650,
+        "variance": 3650
+      },
+      "actual": {
+        "gross": 180,
+        "stock": 30,
+        "shortage": 150,
+        "recovery": 0,
+        "gap": 150,
+        "wait": 9800,
+        "expedite": 8650,
+        "alternate": 9900,
+        "forecast": 28650,
+        "variance": 3650
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A04",
+      "group": "additional-valid-cases",
+      "label": "Inventario suficiente evita nueva compra",
+      "expected": {
+        "gross": 135,
+        "stock": 140,
+        "shortage": 0,
+        "recovery": 0,
+        "gap": 0,
+        "wait": 2000,
+        "expedite": 850,
+        "alternate": 300,
+        "forecast": 20850,
+        "variance": -4150
+      },
+      "actual": {
+        "gross": 135,
+        "stock": 140,
+        "shortage": 0,
+        "recovery": 0,
+        "gap": 0,
+        "wait": 2000,
+        "expedite": 850,
+        "alternate": 300,
+        "forecast": 20850,
+        "variance": -4150
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A05",
+      "group": "additional-valid-cases",
+      "label": "Recuperación válida parcial 20",
+      "expected": {
+        "gross": 135,
+        "stock": 30,
+        "shortage": 105,
+        "recovery": 20,
+        "gap": 85,
+        "wait": 6420,
+        "expedite": 5270,
+        "alternate": 5740,
+        "forecast": 25270,
+        "variance": 270
+      },
+      "actual": {
+        "gross": 135,
+        "stock": 30,
+        "shortage": 105,
+        "recovery": 20,
+        "gap": 85,
+        "wait": 6420,
+        "expedite": 5270,
+        "alternate": 5740,
+        "forecast": 25270,
+        "variance": 270
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A06",
+      "group": "additional-valid-cases",
+      "label": "Recuperación excesiva se limita al faltante",
+      "expected": {
+        "gross": 135,
+        "stock": 30,
+        "shortage": 105,
+        "recovery": 105,
+        "gap": 0,
+        "wait": 2000,
+        "expedite": 850,
+        "alternate": 300,
+        "forecast": 20850,
+        "variance": -4150
+      },
+      "actual": {
+        "gross": 135,
+        "stock": 30,
+        "shortage": 105,
+        "recovery": 105,
+        "gap": 0,
+        "wait": 2000,
+        "expedite": 850,
+        "alternate": 300,
+        "forecast": 20850,
+        "variance": -4150
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A07",
+      "group": "additional-valid-cases",
+      "label": "MPS cero elimina demanda de FG-B",
+      "expected": {
+        "gross": 0,
+        "stock": 30,
+        "shortage": 0,
+        "recovery": 0,
+        "gap": 0,
+        "wait": 2000,
+        "expedite": 850,
+        "alternate": 300,
+        "forecast": 20850,
+        "variance": -4150
+      },
+      "actual": {
+        "gross": 0,
+        "stock": 30,
+        "shortage": 0,
+        "recovery": 0,
+        "gap": 0,
+        "wait": 2000,
+        "expedite": 850,
+        "alternate": 300,
+        "forecast": 20850,
+        "variance": -4150
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A08",
+      "group": "additional-valid-cases",
+      "label": "Stock cero conserva faltante previo acumulado",
+      "expected": {
+        "gross": 135,
+        "stock": -60,
+        "shortage": 195,
+        "recovery": 0,
+        "gap": 195,
+        "wait": 12140,
+        "expedite": 10990,
+        "alternate": 12780,
+        "forecast": 30990,
+        "variance": 5990
+      },
+      "actual": {
+        "gross": 135,
+        "stock": -60,
+        "shortage": 195,
+        "recovery": 0,
+        "gap": 195,
+        "wait": 12140,
+        "expedite": 10990,
+        "alternate": 12780,
+        "forecast": 30990,
+        "variance": 5990
+      },
+      "locations": {
+        "gross": [
+          "MRP_Cambio",
+          "B4"
+        ],
+        "stock": [
+          "MRP_Cambio",
+          "B5"
+        ],
+        "shortage": [
+          "MRP_Cambio",
+          "B6"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "wait": [
+          "Alternativas",
+          "G2"
+        ],
+        "expedite": [
+          "Alternativas",
+          "G3"
+        ],
+        "alternate": [
+          "Alternativas",
+          "G4"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "variance": [
+          "Alternativas",
+          "I3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A09",
+      "group": "additional-valid-cases",
+      "label": "Expedite confirmado, oportuno y dentro de presupuesto",
+      "expected": {
+        "gap": 60,
+        "cost": 3970,
+        "forecast": 23970,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "actual": {
+        "gap": 60,
+        "cost": 3970,
+        "forecast": 23970,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "locations": {
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "cost": [
+          "Alternativas",
+          "G3"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A10",
+      "group": "additional-valid-cases",
+      "label": "Solo alterno confirmado y calificado",
+      "expected": {
+        "feasible": "FACTIBLE CONFIRMADA",
+        "decision": "EVALUAR ALTERNO"
+      },
+      "actual": {
+        "feasible": "FACTIBLE CONFIRMADA",
+        "decision": "EVALUAR ALTERNO"
+      },
+      "locations": {
+        "feasible": [
+          "Alternativas",
+          "M4"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A11",
+      "group": "additional-valid-cases",
+      "label": "Alterno sin calificación no se confirma",
+      "expected": {
+        "feasible": "POTENCIAL / VALIDAR",
+        "decision": "PENDIENTE DE CONFIRMACION / ESCALAR"
+      },
+      "actual": {
+        "feasible": "POTENCIAL / VALIDAR",
+        "decision": "PENDIENTE DE CONFIRMACION / ESCALAR"
+      },
+      "locations": {
+        "feasible": [
+          "Alternativas",
+          "M4"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A12",
+      "group": "additional-valid-cases",
+      "label": "Expedite y alterno tardíos",
+      "expected": {
+        "exp": "NO FACTIBLE",
+        "alt": "NO FACTIBLE",
+        "minimum": "SIN ALTERNATIVA FACTIBLE"
+      },
+      "actual": {
+        "exp": "NO FACTIBLE",
+        "alt": "NO FACTIBLE",
+        "minimum": "SIN ALTERNATIVA FACTIBLE"
+      },
+      "locations": {
+        "exp": [
+          "Alternativas",
+          "M3"
+        ],
+        "alt": [
+          "Alternativas",
+          "M4"
+        ],
+        "minimum": [
+          "Control_Decision",
+          "B2"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A13",
+      "group": "additional-valid-cases",
+      "label": "Indicador distinto de 1 no confirma recuperación",
+      "expected": {
+        "gap": 105,
+        "recovery": 0
+      },
+      "actual": {
+        "gap": 105,
+        "recovery": 0
+      },
+      "locations": {
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "recovery": [
+          "MRP_Cambio",
+          "B7"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "A14",
+      "group": "fault-injection-coverage",
+      "label": "Inyección temporal de cantidad parcial 60 contra faltante 105",
+      "expected": {
+        "coverage": "NO",
+        "feasible": "NO FACTIBLE"
+      },
+      "actual": {
+        "coverage": "NO",
+        "feasible": "NO FACTIBLE"
+      },
+      "locations": {
+        "coverage": [
+          "Alternativas",
+          "K3"
+        ],
+        "feasible": [
+          "Alternativas",
+          "M3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "R01",
+      "group": "robustness-and-decision",
+      "label": "Recuperación con fecha ausente no debe descontarse",
+      "edits": [
+        [
+          "Parametros",
+          "B24",
+          45
+        ],
+        [
+          "Parametros",
+          "B26",
+          1
+        ],
+        [
+          "Parametros",
+          "B25",
+          null
+        ]
+      ],
+      "expected": "recovery=0; falta fecha documentada",
+      "actual": {
+        "acceptable": true,
+        "recovery": 0,
+        "gap": 105
+      },
+      "result": "PASS",
+      "note": "La fecha debe existir además de no ser posterior a la necesidad."
+    },
+    {
+      "id": "R02",
+      "group": "robustness-and-decision",
+      "label": "Expedite sin fecha no debe ser candidato confirmado",
+      "edits": [
+        [
+          "Parametros",
+          "B19",
+          1
+        ],
+        [
+          "Proyectos",
+          "B2",
+          30000
+        ],
+        [
+          "Parametros",
+          "B17",
+          null
+        ]
+      ],
+      "expected": "No EVALUAR EXPEDITE y no FACTIBLE CONFIRMADA",
+      "actual": {
+        "acceptable": true,
+        "feasible": "DATOS REQUERIDOS",
+        "decision": "DATOS REQUERIDOS / REVISAR",
+        "date": 0
+      },
+      "result": "PASS",
+      "note": "Fecha ausente no es evidencia de entrega oportuna."
+    },
+    {
+      "id": "R03",
+      "group": "robustness-and-decision",
+      "label": "Costo unitario ausente no debe habilitar compra",
+      "edits": [
+        [
+          "Parametros",
+          "B19",
+          1
+        ],
+        [
+          "Parametros",
+          "B10",
+          null
+        ]
+      ],
+      "expected": "No EVALUAR EXPEDITE con costo unitario desconocido",
+      "actual": {
+        "acceptable": true,
+        "cost": "COSTO REQUERIDO",
+        "forecast": "COSTO REQUERIDO",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "result": "PASS",
+      "note": "Costo desconocido no equivale a costo cero."
+    },
+    {
+      "id": "R04",
+      "group": "robustness-and-decision",
+      "label": "Compromisos ausentes no deben habilitar compra",
+      "edits": [
+        [
+          "Parametros",
+          "B19",
+          1
+        ],
+        [
+          "Proyectos",
+          "C2",
+          null
+        ]
+      ],
+      "expected": "No EVALUAR EXPEDITE con línea base de costo desconocida",
+      "actual": {
+        "acceptable": true,
+        "forecast": "LINEA BASE REQUERIDA",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "result": "PASS",
+      "note": "Una línea base vacía no acredita disponibilidad de presupuesto."
+    },
+    {
+      "id": "R05",
+      "group": "robustness-and-decision",
+      "label": "Elegir menor costo entre opciones confirmadas comparables",
+      "edits": [
+        [
+          "Proyectos",
+          "B2",
+          40000
+        ],
+        [
+          "Parametros",
+          "B19",
+          1
+        ],
+        [
+          "Parametros",
+          "B20",
+          1
+        ],
+        [
+          "Parametros",
+          "B21",
+          1
+        ],
+        [
+          "Parametros",
+          "B12",
+          3000
+        ]
+      ],
+      "expected": "EVALUAR ALTERNO: USD7020 < expedite USD8460, ambas confirmadas y en presupuesto",
+      "actual": {
+        "acceptable": true,
+        "minimum": 7020,
+        "expedite": 8460,
+        "alternate": 7020,
+        "decision": "EVALUAR ALTERNO"
+      },
+      "result": "PASS",
+      "note": "La guía indica filtrar factibilidad y presupuesto, después comparar costos."
+    },
+    {
+      "id": "E01",
+      "group": "correction-boundaries",
+      "label": "Recuperación sin fecha excluida y señalada",
+      "expected": {
+        "qty": 0,
+        "gap": 105,
+        "warning": "EXCLUIDA: fecha requerida / inválida"
+      },
+      "actual": {
+        "qty": 0,
+        "gap": 105,
+        "warning": "EXCLUIDA: fecha requerida / inválida"
+      },
+      "locations": {
+        "qty": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ],
+        "warning": [
+          "MRP_Cambio",
+          "C7"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E02",
+      "group": "correction-boundaries",
+      "label": "Fecha recuperación inválida no cuenta",
+      "expected": {
+        "qty": 0,
+        "gap": 105
+      },
+      "actual": {
+        "qty": 0,
+        "gap": 105
+      },
+      "locations": {
+        "qty": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E03",
+      "group": "correction-boundaries",
+      "label": "Fecha recuperación inválida no cuenta",
+      "expected": {
+        "qty": 0,
+        "gap": 105
+      },
+      "actual": {
+        "qty": 0,
+        "gap": 105
+      },
+      "locations": {
+        "qty": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E04",
+      "group": "correction-boundaries",
+      "label": "Fecha recuperación inválida no cuenta",
+      "expected": {
+        "qty": 0,
+        "gap": 105
+      },
+      "actual": {
+        "qty": 0,
+        "gap": 105
+      },
+      "locations": {
+        "qty": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E05",
+      "group": "correction-boundaries",
+      "label": "Fecha recuperación igual a necesidad se acepta",
+      "expected": {
+        "qty": 45,
+        "gap": 60
+      },
+      "actual": {
+        "qty": 45,
+        "gap": 60
+      },
+      "locations": {
+        "qty": [
+          "MRP_Cambio",
+          "B7"
+        ],
+        "gap": [
+          "MRP_Cambio",
+          "B8"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E06",
+      "group": "correction-boundaries",
+      "label": "Expedite sin fecha no impide evaluar alterno válido",
+      "expected": {
+        "decision": "EVALUAR ALTERNO"
+      },
+      "actual": {
+        "decision": "EVALUAR ALTERNO"
+      },
+      "locations": {
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E07",
+      "group": "correction-boundaries",
+      "label": "Costo unitario cero explícito sigue permitido",
+      "expected": {
+        "cost": 850,
+        "forecast": 20850,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "actual": {
+        "cost": 850,
+        "forecast": 20850,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "locations": {
+        "cost": [
+          "Alternativas",
+          "G3"
+        ],
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E08",
+      "group": "correction-boundaries",
+      "label": "Compromisos cero explícitos siguen permitidos",
+      "expected": {
+        "forecast": 6310,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "actual": {
+        "forecast": 6310,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "locations": {
+        "forecast": [
+          "Alternativas",
+          "H3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E09",
+      "group": "correction-boundaries",
+      "label": "Costo de expedite faltante no bloquea alterno válido",
+      "expected": {
+        "decision": "EVALUAR ALTERNO",
+        "cost": "COSTO REQUERIDO"
+      },
+      "actual": {
+        "decision": "EVALUAR ALTERNO",
+        "cost": "COSTO REQUERIDO"
+      },
+      "locations": {
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ],
+        "cost": [
+          "Alternativas",
+          "G3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E10",
+      "group": "correction-boundaries",
+      "label": "Empate se presenta para revisión humana",
+      "expected": {
+        "exp": 7020,
+        "alt": 7020,
+        "decision": "EMPATE DE COSTO / REVISAR"
+      },
+      "actual": {
+        "exp": 7020,
+        "alt": 7020,
+        "decision": "EMPATE DE COSTO / REVISAR"
+      },
+      "locations": {
+        "exp": [
+          "Alternativas",
+          "G3"
+        ],
+        "alt": [
+          "Alternativas",
+          "G4"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E11",
+      "group": "correction-boundaries",
+      "label": "Alterno barato sin confirmar no desplaza confirmado",
+      "expected": {
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "actual": {
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "locations": {
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E12",
+      "group": "correction-boundaries",
+      "label": "Primero se filtra presupuesto luego se compara costo",
+      "expected": {
+        "exp": "ESCALAR PRESUPUESTO",
+        "decision": "EVALUAR ALTERNO"
+      },
+      "actual": {
+        "exp": "ESCALAR PRESUPUESTO",
+        "decision": "EVALUAR ALTERNO"
+      },
+      "locations": {
+        "exp": [
+          "Alternativas",
+          "N3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E13",
+      "group": "correction-boundaries",
+      "label": "Presupuesto vacío no da recomendación",
+      "expected": {
+        "variance": "PRESUPUESTO REQUERIDO",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "actual": {
+        "variance": "PRESUPUESTO REQUERIDO",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "locations": {
+        "variance": [
+          "Alternativas",
+          "I3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E14",
+      "group": "correction-boundaries",
+      "label": "Extra de expedite faltante no es cero",
+      "expected": {
+        "cost": "COSTO REQUERIDO",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "actual": {
+        "cost": "COSTO REQUERIDO",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "locations": {
+        "cost": [
+          "Alternativas",
+          "G3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E15",
+      "group": "correction-boundaries",
+      "label": "Fecha necesidad vacía impide factibilidad",
+      "expected": {
+        "feasible": "DATOS REQUERIDOS",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "actual": {
+        "feasible": "DATOS REQUERIDOS",
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "locations": {
+        "feasible": [
+          "Alternativas",
+          "M3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E16",
+      "group": "correction-boundaries",
+      "label": "Fecha expedite fraccionaria no acredita plazo",
+      "expected": {
+        "feasible": "DATOS REQUERIDOS"
+      },
+      "actual": {
+        "feasible": "DATOS REQUERIDOS"
+      },
+      "locations": {
+        "feasible": [
+          "Alternativas",
+          "M3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E17",
+      "group": "correction-boundaries",
+      "label": "Precio texto no acredita costo",
+      "expected": {
+        "cost": "COSTO REQUERIDO"
+      },
+      "actual": {
+        "cost": "COSTO REQUERIDO"
+      },
+      "locations": {
+        "cost": [
+          "Alternativas",
+          "G3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E18",
+      "group": "correction-boundaries",
+      "label": "Precio negativo no habilita evaluación",
+      "expected": {
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "actual": {
+        "decision": "DATOS REQUERIDOS / REVISAR"
+      },
+      "locations": {
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "E19",
+      "group": "correction-boundaries",
+      "label": "Extra cero explícito sigue válido",
+      "expected": {
+        "cost": 5460,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "actual": {
+        "cost": 5460,
+        "decision": "EVALUAR EXPEDITE"
+      },
+      "locations": {
+        "cost": [
+          "Alternativas",
+          "G3"
+        ],
+        "decision": [
+          "Control_Decision",
+          "B3"
+        ]
+      },
+      "result": "PASS"
+    }
+  ],
+  "groups": {
+    "prior-13-reexecuted": {
+      "total": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "additional-valid-cases": {
+      "total": 13,
+      "passed": 13,
+      "failed": 0
+    },
+    "fault-injection-coverage": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "robustness-and-decision": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "correction-boundaries": {
+      "total": 19,
+      "passed": 19,
+      "failed": 0
+    }
+  }
+}

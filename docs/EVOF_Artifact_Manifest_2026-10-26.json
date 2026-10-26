@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-26",
+  "revision": "v0.4.2 corrective prototype",
+  "status": "scoped sprint execution closed with acceptance reservations; not production release",
+  "artifacts": [
+    {
+      "repository_path": "CHANGELOG.md",
+      "bytes": 1071,
+      "sha256": "231c1684deb0448d21a8c5ecbfbb4507d55c6b586e47e119620898b8aa808294"
+    },
+    {
+      "repository_path": "README.md",
+      "bytes": 14904,
+      "sha256": "14ad2d952fc37798cac53933f00339cbb620fb712008179409c9ec01af93d650"
+    },
+    {
+      "repository_path": "docs/EVOF_Excel365_Validation_Status_2026-10-26.md",
+      "bytes": 3724,
+      "sha256": "ba1808656c5534c8431cf9a3c9750a25a5ae57f022bebb7bac60550025cd56d4"
+    },
+    {
+      "repository_path": "docs/EVOF_Simulator_Alignment_2026-10-26.md",
+      "bytes": 2941,
+      "sha256": "573bb87681ad816566b464cb594aa5d89517ad812d3ea452026f7779546c1b86"
+    },
+    {
+      "repository_path": "docs/EVOF_Simulator_Guide.md",
+      "bytes": 7910,
+      "sha256": "53cc9b343f22f8e95e09a6a1b1d252691e101ebf56f41ac64c7282d2c8a9d5b9"
+    },
+    {
+      "repository_path": "docs/EVOF_Sprint_Closeout_2026-10-26.md",
+      "bytes": 5431,
+      "sha256": "3a893c8e5479e070f52ad0a085ab5664d1e3996eb2dc5d504567657a836bb173"
+    },
+    {
+      "repository_path": "docs/EVOF_v0_4_2_Corrections_2026-10-25.md",
+      "bytes": 7291,
+      "sha256": "c0ddc9d9bc305691f94748bfedc4b2fe356cca911e61533fcd3de612be91dbb4"
+    },
+    {
+      "repository_path": "docs/PROCESS_AUTOMATION_LOG.md",
+      "bytes": 8680,
+      "sha256": "c0df81b1fdbb196d6805b3a4c700644a521e80f15d61c42f6f33aa0edfe6bf93"
+    },
+    {
+      "repository_path": "validation/EVOF_v0_4_2_Checks.mjs",
+      "bytes": 14533,
+      "sha256": "7c469925d989362ea29a581178b75a72ebb27b5717f85aa8433e9ea9e6f5ab53"
+    },
+    {
+      "repository_path": "validation/EVOF_v0_4_2_Local_Checks_2026-10-26.json",
+      "bytes": 33652,
+      "sha256": "ad717cfba6aab7096ac97278e286f610ec68c138ad3a4c9018e317ba8ed43262"
+    },
+    {
+      "repository_path": "workbooks/EVOF_MRP_Project_Cost_Decision_v0_4_2_2026-10-26.xlsx",
+      "bytes": 13024,
+      "sha256": "ec22fb39cbf5208a7fb43fedb9759c160e043301c1c5a8bd1edaefc1610acded"
+    }
+  ]
+}
