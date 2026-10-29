@@ -1,0 +1,291 @@
+{
+  "date": "2026-10-29",
+  "version": "1.1",
+  "sourceCommit": "1d81473187489025282a0bf78a4bc4ae20b06f76",
+  "engine": "JavaScript / Node",
+  "synthetic": true,
+  "total": 56,
+  "passed": 56,
+  "cases": [
+    {
+      "name": "Covered supply, unknown commitments",
+      "expected": "Covered material does not certify unknown financial baseline",
+      "pass": true
+    },
+    {
+      "name": "Missing recovery date",
+      "expected": "Exclude 45 pieces, retain 105 shortage and independent candidate",
+      "pass": true
+    },
+    {
+      "name": "Invalid recovery date",
+      "expected": "Impossible recovery date is excluded, not globally blocking",
+      "pass": true
+    },
+    {
+      "name": "Missing receipt date",
+      "expected": "Undated verified receipt cannot reduce demand",
+      "pass": true
+    },
+    {
+      "name": "Missing expedited ETA",
+      "expected": "Unknown lead cannot be on time; independent alternate survives",
+      "pass": true
+    },
+    {
+      "name": "Missing alternate ETA",
+      "expected": "Unknown alternate lead never becomes feasible",
+      "pass": true
+    },
+    {
+      "name": "Missing standard price",
+      "expected": "Unknown price excludes expedite; complete alternate survives",
+      "pass": true
+    },
+    {
+      "name": "Missing expedite fee",
+      "expected": "Blank fee is unknown, not free",
+      "pass": true
+    },
+    {
+      "name": "Missing alternate price",
+      "expected": "Complete expedite remains selectable",
+      "pass": true
+    },
+    {
+      "name": "Missing alternate fee",
+      "expected": "Blank alternate logistics is unknown",
+      "pass": true
+    },
+    {
+      "name": "Missing project commitments",
+      "expected": "Technical feasibility remains; financial selection stops",
+      "pass": true
+    },
+    {
+      "name": "Missing project budget",
+      "expected": "Unknown budget cannot mean within budget",
+      "pass": true
+    },
+    {
+      "name": "Explicit zero fee",
+      "expected": "Numeric zero is a valid assumption",
+      "pass": true
+    },
+    {
+      "name": "Explicit zero commitments",
+      "expected": "Zero baseline differs from missing",
+      "pass": true
+    },
+    {
+      "name": "Lowest eligible cost",
+      "expected": "Both eligible: alternate 7020 is below expedite 8460",
+      "pass": true
+    },
+    {
+      "name": "Equal eligible costs",
+      "expected": "7020 vs 7020 requires human review, no winner",
+      "pass": true
+    },
+    {
+      "name": "False tie excluded",
+      "expected": "Equal cost but alternate unqualified leaves expedite",
+      "pass": true
+    },
+    {
+      "name": "NaN from blank UI",
+      "expected": "Blank UI price preserves independent alternative",
+      "pass": true
+    },
+    {
+      "name": "MPS explosion",
+      "expected": "25 → 45 produces 60 additional components",
+      "pass": true
+    },
+    {
+      "name": "Gross requirement",
+      "expected": "75 + 60 = 135 pieces",
+      "pass": true
+    },
+    {
+      "name": "Shared inventory",
+      "expected": "90 − 60 = 30 remaining",
+      "pass": true
+    },
+    {
+      "name": "Corrected coverage",
+      "expected": "135 − 30 = 105 uncovered",
+      "pass": true
+    },
+    {
+      "name": "Default expedite cost",
+      "expected": "105 × $52 + $850 = $6,310",
+      "pass": true
+    },
+    {
+      "name": "Default project forecast",
+      "expected": "$20,000 + $6,310 = $26,310",
+      "pass": true
+    },
+    {
+      "name": "Unconfirmed recovery",
+      "expected": "45 proposed pieces do not reduce the shortage",
+      "pass": true
+    },
+    {
+      "name": "Missing recovery evidence",
+      "expected": "Confirmation alone does not qualify the recovery",
+      "pass": true
+    },
+    {
+      "name": "Late recovery",
+      "expected": "Confirmed Nov 5 recovery does not cover Oct 30",
+      "pass": true
+    },
+    {
+      "name": "Timely recovery",
+      "expected": "45 confirmed pieces leave 60 uncovered",
+      "pass": true
+    },
+    {
+      "name": "Partial recovery",
+      "expected": "20 confirmed pieces leave 85 uncovered",
+      "pass": true
+    },
+    {
+      "name": "Full recovery",
+      "expected": "105 confirmed pieces suppress additional supply",
+      "pass": true
+    },
+    {
+      "name": "Recovery is capped",
+      "expected": "Excess recovery cannot create a negative shortage",
+      "pass": true
+    },
+    {
+      "name": "MPS reduction",
+      "expected": "25 → 20 revised units releases 15 components",
+      "pass": true
+    },
+    {
+      "name": "No MPS change",
+      "expected": "Zero incremental BOM does not erase the baseline shortage",
+      "pass": true
+    },
+    {
+      "name": "Confirmation gate",
+      "expected": "On-time estimate never becomes confirmed feasibility",
+      "pass": true
+    },
+    {
+      "name": "Budget escalation",
+      "expected": "Confirmed expedite still exceeds the $25,000 budget",
+      "pass": true
+    },
+    {
+      "name": "Budget boundary",
+      "expected": "Exact budget fit remains a candidate",
+      "pass": true
+    },
+    {
+      "name": "Late supply",
+      "expected": "Every late option routes to impact management",
+      "pass": true
+    },
+    {
+      "name": "Alternate qualification",
+      "expected": "A confirmed alternate requires separate qualification",
+      "pass": true
+    },
+    {
+      "name": "Timely existing receipt",
+      "expected": "40 verified pieces reduce the requirement once",
+      "pass": true
+    },
+    {
+      "name": "Partial existing PO",
+      "expected": "40 late pieces leave 65 unresolved",
+      "pass": true
+    },
+    {
+      "name": "Committed material credit",
+      "expected": "Already committed material is counted only once",
+      "pass": true
+    },
+    {
+      "name": "MOQ / order multiple",
+      "expected": "105 pieces round to 120 with 20-piece multiples",
+      "pass": true
+    },
+    {
+      "name": "Capacity cap",
+      "expected": "A 50-piece offer retains a 55-piece residual",
+      "pass": true
+    },
+    {
+      "name": "Origin protection",
+      "expected": "Late replenishment blocks a transfer",
+      "pass": true
+    },
+    {
+      "name": "Replenishment confirmation",
+      "expected": "A timely replacement estimate alone does not confirm a transfer path",
+      "pass": true
+    },
+    {
+      "name": "Confirmed replenishment",
+      "expected": "Transfer and replacement evidence make the full path a candidate",
+      "pass": true
+    },
+    {
+      "name": "Documented mitigation",
+      "expected": "An approved recovery path can conditionally protect origin",
+      "pass": true
+    },
+    {
+      "name": "Allocation reconciliation",
+      "expected": "75/25 split keeps enterprise spend at $5,660",
+      "pass": true
+    },
+    {
+      "name": "Origin budget gate",
+      "expected": "Receiving-project savings cannot hide an origin overrun",
+      "pass": true
+    },
+    {
+      "name": "Replenishment boundary",
+      "expected": "Transfer LEAD protects the earlier replacement decision",
+      "pass": true
+    },
+    {
+      "name": "Urgent vs schedulable",
+      "expected": "Expedite has one day; a 5-day supplier has nine",
+      "pass": true
+    },
+    {
+      "name": "At-boundary action",
+      "expected": "A 14-day expedite is actionable immediately",
+      "pass": true
+    },
+    {
+      "name": "Invalid inputs",
+      "expected": "Negative MPS blocks decisions",
+      "pass": true
+    },
+    {
+      "name": "Invalid dates",
+      "expected": "Impossible dates block calculations",
+      "pass": true
+    },
+    {
+      "name": "Prior stock deficit",
+      "expected": "Uncovered prior consumption carries forward",
+      "pass": true
+    },
+    {
+      "name": "Recovery cost retention",
+      "expected": "Recovery cost remains visible even when supply is covered",
+      "pass": true
+    }
+  ]
+}

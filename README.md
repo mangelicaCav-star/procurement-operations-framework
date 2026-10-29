@@ -2,36 +2,29 @@
 
 **Independent Portfolio Project | Procurement · Supply Chain · Operations Improvement · Data Governance**
 
-## Current MRP/project-cost checkpoint — 26 October 2026
+## Current MRP/project-cost checkpoint — reviewed 29 October 2026
 
-The [v0.4.2 corrective workbook](workbooks/EVOF_MRP_Project_Cost_Decision_v0_4_2_2026-10-26.xlsx) fixes missing-date, missing-cost, missing-baseline and candidate-selection defects. It retains the bounded synthetic-data scope. Nine date cells now share yyyy-mm-dd formatting.
+EVOF has a bounded v0.4.2 corrective workbook and a separate owner-private **simulator 1.1**. Both support synthetic-data evaluation; neither establishes production readiness or real ERP/supplier/Finance validation.
 
-| Evidence | Result and limit |
-|---|---|
-| [Local regression](validation/EVOF_v0_4_2_Local_Checks_2026-10-26.json) | **51/51 PASS**, rerun on the exact final workbook; not Excel desktop evidence |
-| [Excel 365 session, 26 October](docs/EVOF_Excel365_Validation_Status_2026-10-26.md) | Seven positive user reports: **six case confirmations plus one setup-qualified result** requiring reconfirmation of both eligible alternatives |
-| Private simulator 1.0 | Separate historical 38-case evidence; no simulator implementation changed in this publication |
+| Artifact / evidence | Verified state | Limit |
+|---|---|---|
+| [Published corrective workbook v0.4.2](workbooks/EVOF_MRP_Project_Cost_Decision_v0_4_2_2026-10-26.xlsx) | Preserved unchanged; dated 26 October | Existing 51/51 local checks; no new native execution in this review |
+| [Excel365 session](docs/EVOF_Excel365_Validation_Status_2026-10-26.md) | Six case confirmations plus one setup-qualified result reported by user | Lower-cost case still requires unambiguous reconfirmation with both alternatives eligible |
+| [Private simulator 1.1](https://evof-decision-simulator.humblerobin2048.chatgpt.site) | Published 26 October; corrective v0.4.2 core rules | Separate implementation, owner-only; declared extensions retain their own assumptions |
+| [Current JavaScript regression](validation/EVOF_Simulator_1_1_Results_2026-10-29.json) | **56/56 PASS**, rerun on the exact deployed source commit | 38 historical plus 18 corrective cases, not 56 workbook or native tests |
+| [Simulator evidence review](docs/EVOF_Review_2026-10-29.md) | Source/deployment lineage and limitations checked | Later open-PO cost rule is not yet verified across artifacts |
 
-**[Sprint closeout](docs/EVOF_Sprint_Closeout_2026-10-26.md)** · **[Corrections](docs/EVOF_v0_4_2_Corrections_2026-10-25.md)** · **[Bounded simulator alignment](docs/EVOF_Simulator_Alignment_2026-10-26.md)** · **[Artifact fingerprints](docs/EVOF_Artifact_Manifest_2026-10-26.json)**.
+The earlier 26 October README incorrectly described simulator alignment as not yet implemented. The simulator was in fact deployed as 1.1 later that day. This review corrects the chronology without upgrading the workbook's acceptance evidence.
 
-The sprint execution is closed with acceptance reservations. The workbook's B23 committed-material field is not connected to its calculations; no general prevention of cost double counting is claimed. Reconfirm the desktop lower-cost comparison with both options eligible. The model is ready to start bounded simulator alignment, not to claim that alignment is complete or that the full EVOF v2.0 architecture is implemented. Earlier binaries and dated evidence remain historical references.
+Default demand remains 135 pieces, stock remaining after prior consumption 30: **105 uncovered**. Sixty applies only after 45 pieces of verified, documented, timely recovery. The baseline expedite amount remains USD 6310, forecast USD 26310 against budget USD 25000.
 
-## Simulator 1.0 — separate checkpoint of 22 October 2026
+**Open cost-contract limit:** the business premise treats open supplier PO value as already committed in the project baseline, with B23 informative. The deployed simulator still exposes its earlier committed-material credit extension. Its 56-case suite does not establish parity with that later premise; a focused corrective verification remains pending. Do not use that credit as proof of approved cross-artifact cost treatment.
 
-The private **EVOF MRP Project Cost Decision Simulator 1.0** makes MPS/BOM changes, full uncovered demand, supply evidence, delivery windows and project-budget consequences interactive. It also exposes a bounded reallocation/replenishment comparison with origin protection and proposed cost allocation.
-
-- **[Simulator guide and rule lineage](docs/EVOF_Simulator_Guide.md)**
-- **[38-case JavaScript validation record](docs/EVOF_Simulator_Validation_2026-10-22.md)** — 38/38 PASS with scoped browser QA, not production validation.
-- [Private simulator — owner account required](https://evof-decision-simulator.humblerobin2048.chatgpt.site).
-- Workbook evidence: 13/13 prior local coverage checks and [7/7 Excel 365 checks reported by the user](docs/EVOF_Excel365_Validation_Status_2026-10-21.md).
-
-Default demand is 135 pieces, with 30 pieces left after prior consumption: **105 uncovered**, not 60. Sixty is the residual only after 45 pieces of verified, documented, timely recovery. Default expedite is USD 6,310 and the modeled project forecast is USD 26,310 against USD 25,000 budget. Estimated delivery, confirmation, budget authorization and human approval remain distinct.
-
-The simulator is owner-private; this repository publishes its documentation, not its source or assets. Its disclosed MOQ/capacity, calendar-window and cost-allocation controls are prototype extensions for functional review. This update changes no workbook binary and does not complete the full v2.0 architecture, real ERP integration, BUD integration or agent orchestration.
+[Current simulator guide](docs/EVOF_Simulator_Guide.md) · [Workbook closeout](docs/EVOF_Sprint_Closeout_2026-10-26.md) · [Original 38-case historical record](docs/EVOF_Simulator_Validation_2026-10-22.md). Documentation/results are public; simulator source/assets and access remain private. No BUD integration, multi-entity purchasing, full v2.0 architecture or autonomous orders are implemented by this review.
 
 ## Project Overview
 
-> **Architecture update (2026-10-16):** [EVOF Functional Scope v2.0](docs/EVOF_Functional_Scope_v2_0.md) defines EVOF as an ERP-data-informed, cross-functional decision-support framework—not a transactional ERP replacement. The Excel v1.1 workbooks remain historical prototypes; ERP integration and the complete v2.0 architecture remain unimplemented. The bounded MRP v0.4.2 corrective workbook and private simulator 1.0 are separate implementations described below.
+> **Architecture update (2026-10-16):** [EVOF Functional Scope v2.0](docs/EVOF_Functional_Scope_v2_0.md) defines EVOF as an ERP-data-informed, cross-functional decision-support framework—not a transactional ERP replacement. The Excel v1.1 workbooks remain historical prototypes; ERP integration and the complete v2.0 architecture remain unimplemented. The bounded MRP v0.4.2 corrective workbook and private simulator 1.1 are separate implementations described below.
 
 
 EVOF is an independent procurement operations improvement initiative designed to connect Procurement, Inventory, Finance, Engineering, and Project Management through structured workflows, consistent data, and clear responsibilities.
@@ -173,4 +166,5 @@ The v0.4 regression identified **EVOF-040-01**: candidate quantity was compared 
 ### Corrective workbook publication — 2026-10-21
 
 The **EVOF v0.4.1 Coverage Corrected** workbook has been uploaded to [docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx](docs/EVOF_MRP_Project_Cost_Decision_v0_4_1_Coverage_Corrected_LOCAL.xlsx) (filename retains the original `_LOCAL` suffix). The original v0.4 workbook remains unchanged at repository root. See the [13-check local regression report](docs/EVOF_v0_4_1_Coverage_Regression_Report_2026-10-20.md). The 13 local checks remain separate from the [7 user-reported Excel 365 PASS results](docs/EVOF_Excel365_Validation_Status_2026-10-21.md). The desktop outcomes were not independently witnessed. No real ERP, supplier confirmation, capacity, MOQ or live finance validation is claimed.
+
 

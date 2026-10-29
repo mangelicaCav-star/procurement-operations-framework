@@ -1,3 +1,17 @@
+# EVOF simulator — current checkpoint 29 October 2026
+
+The deployed private version is **1.1**, source commit `1d81473187489025282a0bf78a4bc4ae20b06f76`, aligned to the bounded corrective v0.4.2 core rules on 26 October. The guide below preserves original 1.0 scope/history; this current note takes precedence for version and evidence.
+
+- 56/56 JavaScript reference cases passed again on 29 October: 38 retained historical cases and 18 corrective cases. [Current review](EVOF_Review_2026-10-29.md).
+- Missing/invalid recovery dates do not cover demand. Missing delivery timing leaves the affected ETA unknown.
+- Missing prices, charges, commitments or budget do not become zero. Explicit zero retains its meaning.
+- Eligibility precedes cost comparison; equal lowest eligible costs require human review.
+- Browser evidence dated 26 October is historical and separate from this Node rerun. No fresh browser or native Excel365 execution is claimed.
+- The later rule that open-PO value is already included in project commitments (B23 informative) is not yet verified against the deployed committed-material credit extension. Do not infer approved parity from passing tests.
+- No live ERP connection, authenticated supplier/Finance approval, multi-entity integration or full v2.0 completion.
+
+---
+
 # EVOF — Private MRP Decision Simulator 1.0
 
 **Implementation described:** 22 October 2026. **Documentation checkpoint:** 26 October 2026. **Status:** deployed, owner-only prototype using synthetic data. The simulator is a separate implementation of a bounded decision case, not a release of the complete EVOF v2.0 architecture.
@@ -71,4 +85,5 @@ The JavaScript engine passed **38/38 fixed scenario checks**. Browser interactio
 Workbook evidence remains distinct: **13/13 prior local coverage checks**, plus **7/7 Excel 365 checks reported by the user on 21 October**. The reported desktop results are not independently witnessed values. Simulator tests do not certify the historical integrated governance v1.1 workbook or every v2.0 requirement.
 
 The next gate is a scenario-by-scenario comparison of workbook, simulator and the project owner's operational judgment, documenting discrepancies and deciding which extensions become accepted EVOF rules. Real supplier validation, capacity, split deliveries, production calendars, ERP/finance reconciliation, broader BOM planning and BUD integration remain open. Multi-entity purchase consolidation, a standalone small-business variant and agent orchestration remain deferred; this simulator does not activate those workstreams.
+
 
